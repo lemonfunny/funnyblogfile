@@ -3,7 +3,7 @@ name: Node.js Package
 on:
   push:
     branches:
-      - main
+      - master
 
 jobs:
   publish-npm:
@@ -14,9 +14,6 @@ jobs:
         with:
           node-version: "12.x"
           registry-url: https://registry.npmjs.org/
-      - name: 发布npm包
-        run: |
-           npm version patch
-           npm publish
+      - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.npm_token}}
